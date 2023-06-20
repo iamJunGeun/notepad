@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.samsung.android.notepad.MainViewModel" />
+        <variable
+            name="fragment"
+            type="com.samsung.android.notepad.MainFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,5 +31,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="@{() -> fragment.createNote()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+            app:layout_constraintHorizontal_bias="0.818"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.874"
+            app:srcCompat="@drawable/ic_add" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

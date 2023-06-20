@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samsung.android.notepad.data.NoteEntity
 import com.samsung.android.notepad.databinding.ListItemBinding
 
-class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
+class NoteListAdapter(private val listener: ListItemListener) : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
     private var noteList = emptyList<NoteEntity> ()
 
     fun setData(items: List<NoteEntity>) {
@@ -18,6 +18,7 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
             fun bind(item: NoteEntity) {
                 binding.noteEntity = item
+                binding.itemListener = listener
                 binding.executePendingBindings()
             }
         }
@@ -32,5 +33,10 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(noteList[position])
+    }
+
+    interface ListItemListener {
+        fun onItemClicked(noteId: Int)
+        fun onItemSelected(note: NoteEntity)
     }
 }
